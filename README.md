@@ -1,20 +1,14 @@
-<![CDATA[# FastAPI Seminario CI/CD
+# Pipeline CI/CD
 
-[![CI/CD Pipeline](https://github.com/usuario/fastapi-seminario/actions/workflows/deploy.yml/badge.svg)](https://github.com/usuario/fastapi-seminario/actions)
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688.svg)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED.svg)](https://www.docker.com/)
-
-Projeto completo demonstrando um pipeline de CI/CD moderno utilizando **FastAPI**, **Docker**, **GitHub Actions**, **Docker Hub**, **Nginx**, **Azure DevOps** e ferramentas de observabilidade como **Prometheus** e **Dozzle**.
+Projeto completo demonstrando um pipeline de CI/CD utilizando **FastAPI**, **Docker**, **GitHub Actions**, **Docker Hub**, **Nginx**, **Azure DevOps** e ferramentas de observabilidade como **Prometheus** e **Dozzle**.
 
 ---
 
-## Indice
+## Índice
 
 - [Objetivo](#objetivo)
 - [Arquitetura](#arquitetura)
 - [Tecnologias](#tecnologias)
-- [Estrutura do Projeto](#estrutura-do-projeto)
 - [Como Executar Localmente](#como-executar-localmente)
 - [Como Executar com Docker](#como-executar-com-docker)
 - [Pipeline CI/CD](#pipeline-cicd)
@@ -28,19 +22,19 @@ Projeto completo demonstrando um pipeline de CI/CD moderno utilizando **FastAPI*
 
 ## Objetivo
 
-Desenvolver um projeto que represente um ambiente profissional de DevOps contendo:
+Desenvolver um projeto que represente um ambiente profissional de DevOps, contemplando:
 
-- API REST com FastAPI pronta para producao
-- Docker e Docker Compose para containerizacao
-- GitHub Actions para CI/CD automatizado
-- Versionamento SemVer + Short Hash do commit
-- Publicacao automatica no Docker Hub
-- Deploy automatico via SSH
-- Proxy Reverso com Nginx
-- Integracao GitHub + Azure DevOps
-- Observabilidade com Prometheus e Dozzle
-- Documentacao completa
-- Codigo limpo, testado e comentado
+- API REST com FastAPI pronta para produção.
+- Docker e Docker Compose para conteinerização.
+- GitHub Actions para automação de CI/CD.
+- Versionamento SemVer combinado com o Short Hash do commit.
+- Publicação automática de imagens no Docker Hub.
+- Deploy automatizado via SSH.
+- Proxy Reverso configurado com Nginx.
+- Integração do fluxo de trabalho entre GitHub e Azure DevOps.
+- Observabilidade de métricas e logs com Prometheus e Dozzle.
+- Documentação completa da API.
+- Código limpo, testado e comentado.
 
 ---
 
@@ -58,7 +52,7 @@ flowchart LR
         B["Nginx - Proxy Reverso - Porta 80"]
         C["FastAPI - API REST - Porta 8000"]
         D["SQLite - Banco de Dados"]
-        E["Prometheus - Metricas - Porta 9090"]
+        E["Prometheus - Métricas - Porta 9090"]
         F["Dozzle - Logs - Porta 9999"]
     end
 
@@ -77,7 +71,7 @@ flowchart TD
     B --> C[GitHub Actions]
     C --> D[Executar Testes]
     D --> E{Testes OK?}
-    E -->|Nao| F[Pipeline Falha]
+    E -->|Não| F[Pipeline Falha]
     E -->|Sim| G[Docker Build]
     G --> H[Gerar Tag SemVer]
     H --> I[Push Docker Hub]
@@ -85,10 +79,10 @@ flowchart TD
     J --> K[Deploy Servidor]
     K --> L[docker compose pull api]
     L --> M[docker compose up -d api]
-    M --> N[Deploy Concluido]
+    M --> N[Deploy Concluído]
 ```
 
-### Containers Docker
+### Contêineres Docker
 
 ```mermaid
 graph TB
@@ -146,10 +140,10 @@ flowchart LR
 ```mermaid
 flowchart TB
     subgraph Internet
-        USER[Usuario]
+        USER[Usuário]
     end
 
-    subgraph Servidor de Producao
+    subgraph Servidor de Produção
         subgraph Docker Engine
             NG[Nginx :80]
             API[FastAPI :8000]
@@ -180,52 +174,52 @@ flowchart TB
 
 ## Tecnologias
 
-| Tecnologia | Versao | Descricao |
+| Tecnologia | Versão | Descrição |
 |------------|--------|-----------|
-| Python | 3.12 | Linguagem principal |
-| FastAPI | 0.115.0 | Framework web assincrono |
+| Python | 3.12 | Linguagem de programação principal |
+| FastAPI | 0.115.0 | Framework web assíncrono para a API |
 | Uvicorn | 0.30.6 | Servidor ASGI |
-| SQLAlchemy | 2.0.35 | ORM para banco de dados |
-| Pydantic | 2.x | Validacao de dados |
-| Docker | latest | Containerizacao |
-| Docker Compose | v2 | Orquestracao de containers |
-| Nginx | alpine | Proxy reverso |
-| Prometheus | latest | Coleta de metricas |
-| Dozzle | latest | Visualizacao de logs |
-| GitHub Actions | v4 | CI/CD |
-| Azure DevOps | - | Gerenciamento de projeto |
-| pytest | 8.3.3 | Testes automatizados |
-| Black | 24.8.0 | Formatacao de codigo |
-| Ruff | 0.6.8 | Linting |
-| isort | 5.13.2 | Organizacao de imports |
+| SQLAlchemy | 2.0.35 | ORM para comunicação com o banco de dados |
+| Pydantic | 2.x | Validação de dados e tipagem |
+| Docker | latest | Conteinerização da aplicação |
+| Docker Compose | v2 | Orquestração local dos contêineres |
+| Nginx | alpine | Servidor web atuando como proxy reverso |
+| Prometheus | latest | Coleta e armazenamento de métricas |
+| Dozzle | latest | Interface web para visualização de logs |
+| GitHub Actions | v4 | Ferramenta de automação de CI/CD |
+| Azure DevOps | - | Gerenciamento de projeto e tracking de issues |
+| pytest | 8.3.3 | Framework de testes automatizados |
+| Black | 24.8.0 | Formatador de código |
+| Ruff | 0.6.8 | Linter para análise estática |
+| isort | 5.13.2 | Organizador de imports |
 
 ---
 
 ## Como Executar Localmente
 
-### Pre-requisitos
+### Pré-requisitos
 
 - Python 3.12+
-- pip
+- Gerenciador de pacotes `pip`
 
 ### Passos
 
 ```bash
-# 1. Criar ambiente virtual
+# 1. Criar o ambiente virtual
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 
-# 2. Instalar dependencias
+# 2. Instalar as dependências
 make install
 
-# 3. Configurar variaveis de ambiente
+# 3. Configurar as variáveis de ambiente
 make env-setup
 
-# 4. Executar a aplicacao
+# 4. Executar a aplicação
 make run
 
-# 5. Acessar a documentacao
-# http://localhost:8000/docs
+# 5. Acessar a documentação interativa
+# O Swagger estará disponível em: http://localhost:8000/docs
 ```
 
 ### Executar Testes
@@ -234,13 +228,13 @@ make run
 make test
 ```
 
-### Lint e Formatacao
+### Lint e Formatação
 
 ```bash
-# Verificar
+# Verificar adequação ao padrão de código
 make lint
 
-# Formatar automaticamente
+# Aplicar formatação automaticamente
 make format
 ```
 
@@ -249,71 +243,75 @@ make format
 ## Como Executar com Docker
 
 ```bash
-# Build da imagem
+# Fazer o build da imagem Docker
 make docker-build
 
-# Subir todos os containers
+# Iniciar todos os contêineres em segundo plano
 make docker-up
 
-# Verificar status
+# Verificar o status dos serviços ativos
 make docker-ps
 
-# Ver logs
+# Visualizar os logs no terminal
 make docker-logs
 ```
 
-### Servicos disponiveis
+### Serviços Disponíveis
 
-| Servico | URL | Descricao |
+| Serviço | URL | Descrição |
 |---------|-----|-----------|
-| API (via Nginx) | http://localhost | Acesso via proxy reverso |
-| API (direto) | http://localhost:8000 | Acesso direto a API |
-| Swagger Docs | http://localhost:8000/docs | Documentacao interativa |
-| ReDoc | http://localhost:8000/redoc | Documentacao alternativa |
-| Prometheus | http://localhost:9090 | Dashboard de metricas |
-| Dozzle | http://localhost:9999 | Visualizacao de logs |
-| Metricas | http://localhost:8000/metrics | Metricas Prometheus |
+| API (via Nginx) | http://localhost | Acesso à API através do proxy reverso |
+| API (direto) | http://localhost:8000 | Acesso direto ao contêiner da API |
+| Swagger Docs | http://localhost:8000/docs | Documentação interativa (OpenAPI) |
+| ReDoc | http://localhost:8000/redoc | Documentação alternativa |
+| Prometheus | http://localhost:9090 | Dashboard para consulta de métricas |
+| Dozzle | http://localhost:9999 | Interface para visualização de logs do Docker |
+| Métricas | http://localhost:8000/metrics | Endpoint consumido pelo Prometheus |
 
 ---
 
 ## Pipeline CI/CD
 
-O pipeline e executado automaticamente via GitHub Actions a cada push na branch `main`.
+O pipeline é engatilhado automaticamente pelo GitHub Actions a cada *push* realizado na branch `main`.
 
 ### Etapas do Pipeline
 
-| Etapa | Descricao | Detalhes |
+| Etapa | Descrição | Detalhes |
 |-------|-----------|----------|
-| Testes | Executa lint e testes | Ruff, Black, isort, pytest |
-| Build | Constroi imagem Docker | Com cache para otimizar |
-| Tag | Gera versao SemVer | `VERSION-SHORT_SHA` |
-| Push | Publica no Docker Hub | Tag versionada + latest |
-| Deploy | Deploy via SSH | Atualiza apenas a API |
+| Testes | Executa análise estática e testes unitários | Utiliza Ruff, Black, isort e pytest |
+| Build | Constrói a imagem Docker da API | Utiliza cache para otimizar o tempo de execução |
+| Tag | Gera o versionamento SemVer | Formato: `VERSION-SHORT_SHA` |
+| Push | Publica a imagem no Docker Hub | Sobe a imagem com a tag versionada e a tag `latest` |
+| Deploy | Realiza o deploy automático no servidor via SSH | Atualiza exclusivamente o serviço da API |
 
-### GitHub Secrets Necessarios
+### GitHub Secrets Necessários
 
-| Secret | Descricao |
+Para que o pipeline funcione corretamente, os seguintes *secrets* devem ser configurados no repositório:
+
+| Secret | Descrição |
 |--------|-----------|
-| `DOCKER_USERNAME` | Usuario do Docker Hub |
-| `DOCKER_PASSWORD` | Senha/Token do Docker Hub |
-| `SERVER_IP` | IP do servidor de producao |
-| `SERVER_USER` | Usuario SSH do servidor |
-| `SSH_PRIVATE_KEY` | Chave privada SSH |
+| `DOCKER_USERNAME` | Nome de usuário da conta do Docker Hub |
+| `DOCKER_PASSWORD` | Senha ou Personal Access Token do Docker Hub |
+| `SERVER_IP` | Endereço IP do servidor de produção |
+| `SERVER_USER` | Usuário de autenticação SSH no servidor |
+| `SSH_PRIVATE_KEY` | Chave privada SSH para acesso ao servidor |
 
 ---
 
 ## Deploy
 
-O deploy ocorre automaticamente via SSH apos o pipeline de CI/CD.
+O processo de deploy ocorre de forma automatizada (via SSH) assim que a esteira de CI/CD conclui o push da nova imagem.
 
-### Fluxo
+### Fluxo de Atualização Automática
 
-1. GitHub Actions conecta ao servidor via SSH
-2. Executa `docker compose pull api` para baixar a nova imagem
-3. Executa `docker compose up -d api` para atualizar o container
-4. Apenas o container da API e reiniciado; os demais permanecem ativos
+1. O GitHub Actions autentica no servidor de produção via SSH.
+2. Executa o comando `docker compose pull api` para baixar a versão mais recente da imagem.
+3. Executa o comando `docker compose up -d api` para recriar apenas o contêiner da aplicação.
+4. Apenas o serviço da API é reiniciado; o Nginx, Prometheus e Dozzle permanecem ativos e sem interrupções.
 
 ### Deploy Manual
+
+Caso precise forçar uma atualização diretamente no servidor:
 
 ```bash
 ssh user@servidor
@@ -326,24 +324,26 @@ docker compose up -d api
 
 ## Azure DevOps
 
-### Integracao GitHub + Azure DevOps
+### Integração GitHub + Azure DevOps
 
-O projeto utiliza Azure DevOps para gerenciamento de Issues e Pull Requests vinculados ao repositorio GitHub.
+Este projeto utiliza o Azure DevOps Boards para o gerenciamento ágil (Issues) integrado diretamente ao ciclo de vida dos *Pull Requests* no GitHub.
 
-### Como funciona
+### Como Funciona
 
-1. Criar Issue no Azure DevOps Boards (ex: `AB#15`)
-2. Criar branch vinculada a issue
-3. Commits referenciam a issue: `git commit -m "feat: adiciona endpoint - Fixes AB#15"`
-4. Pull Request vincula automaticamente a issue
-5. Merge fecha automaticamente a issue
+1. Cria-se uma Issue no Azure DevOps Boards (ex.: `AB#15`).
+2. Cria-se uma branch no GitHub dedicada a esta funcionalidade/correção.
+3. Os commits devem referenciar o ID da issue. Exemplo: `git commit -m "feat: adiciona endpoint - Fixes AB#15"`.
+4. A abertura do Pull Request interliga automaticamente a discussão à respectiva issue no Azure.
+5. Quando o Pull Request é mesclado (*merged*), a issue é encerrada automaticamente no painel.
 
-### Mensagens de Commit
+### Padrão de Mensagens de Commit
 
-```
-feat: implementa CRUD de usuarios - AB#15
-fix: corrige validacao de email - Fixes AB#15
-docs: atualiza documentacao da API - AB#20
+Recomenda-se utilizar *Conventional Commits* com a referência do Azure:
+
+```text
+feat: implementa CRUD de usuários - AB#15
+fix: corrige validação de e-mail - Fixes AB#15
+docs: atualiza documentação da API - AB#20
 ```
 
 ---
@@ -352,82 +352,81 @@ docs: atualiza documentacao da API - AB#20
 
 ### Prometheus (Porta 9090)
 
-Coleta metricas da aplicacao FastAPI:
+Ferramenta responsável por raspar e armazenar as métricas da aplicação FastAPI. Algumas das métricas coletadas incluem:
 
-- `http_requests_total` - Total de requisicoes HTTP
-- `http_request_duration_seconds` - Duracao das requisicoes
-- `http_request_size_bytes` - Tamanho das requisicoes
-- `http_response_size_bytes` - Tamanho das respostas
+- `http_requests_total`: Contagem total de requisições HTTP.
+- `http_request_duration_seconds`: Histograma de duração das requisições.
+- `http_request_size_bytes`: Tamanho (em bytes) das requisições recebidas.
+- `http_response_size_bytes`: Tamanho (em bytes) das respostas enviadas.
 
-Acesso: http://localhost:9090
+**Acesso:** http://localhost:9090
 
 ### Dozzle (Porta 9999)
 
-Visualizacao em tempo real dos logs de todos os containers Docker.
+Oferece visualização unificada e em tempo real dos logs gerados por todos os contêineres Docker da infraestrutura.
 
-Acesso: http://localhost:9999
+**Acesso:** http://localhost:9999
 
 ---
 
 ## API Endpoints
 
-### Health e Info
+### Monitoramento e Informações
 
-| Metodo | Endpoint | Descricao |
+| Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| `GET` | `/health` | Health check |
-| `GET` | `/info` | Informacoes da aplicacao |
-| `GET` | `/metrics` | Metricas Prometheus |
-| `GET` | `/docs` | Swagger UI |
-| `GET` | `/redoc` | ReDoc |
+| `GET` | `/health` | Verifica a saúde da aplicação (*Health check*) |
+| `GET` | `/info` | Exibe os metadados da aplicação e versão |
+| `GET` | `/metrics` | Expõe as métricas no formato do Prometheus |
+| `GET` | `/docs` | Acessa a interface do Swagger UI |
+| `GET` | `/redoc` | Acessa a interface do ReDoc |
 
-### Usuarios (CRUD)
+### Usuários (CRUD)
 
-| Metodo | Endpoint | Descricao |
+| Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| `GET` | `/api/v1/users` | Listar usuarios (paginado) |
-| `GET` | `/api/v1/users/{id}` | Buscar usuario por ID |
-| `POST` | `/api/v1/users` | Criar novo usuario |
-| `PUT` | `/api/v1/users/{id}` | Atualizar usuario |
-| `DELETE` | `/api/v1/users/{id}` | Remover usuario |
+| `GET` | `/api/v1/users` | Lista todos os usuários (com suporte a paginação) |
+| `GET` | `/api/v1/users/{id}` | Busca os detalhes de um usuário específico pelo ID |
+| `POST` | `/api/v1/users` | Cadastra um novo usuário no sistema |
+| `PUT` | `/api/v1/users/{id}` | Atualiza os dados de um usuário existente |
+| `DELETE` | `/api/v1/users/{id}` | Remove um usuário do banco de dados |
 
 ---
 
 ## Versionamento
 
-O projeto utiliza **SemVer** (Semantic Versioning) combinado com o Short Hash do commit Git.
+O projeto adota o padrão **SemVer** (Semantic Versioning), adicionando um sufixo correspondente ao *Short Hash* do commit do Git para garantir rastreabilidade.
 
 ### Formato
 
-```
+```text
 MAJOR.MINOR.PATCH-SHORT_SHA
 ```
 
-### Exemplos
+### Exemplos de Tags
 
-```
+```text
 1.0.0-a2f4c9d
 1.0.1-b3e5d8f
 1.1.0-c4f6e9a
 2.0.0-d5a7f0b
 ```
 
-A tag e gerada automaticamente pelo GitHub Actions e utilizada como tag da imagem Docker:
+Essas tags são geradas de forma autônoma pelo GitHub Actions e atreladas às imagens exportadas para o repositório Docker:
 
-```
+```bash
 usuario/fastapi-seminario:1.0.0-a2f4c9d
 usuario/fastapi-seminario:latest
 ```
 
 ---
 
-## Licenca
+## Licença
 
-Este projeto e desenvolvido para fins educacionais como parte do Seminario de Computacao em Nuvem.
+Este projeto foi desenvolvido com propósitos estritamente educacionais, compondo a avaliação final do Seminário de Computação em Nuvem.
 
 ---
 
 ## Autor
 
-**Matheus Andrade** - Seminario de Computacao em Nuvem
-]]>
+**Matheus Andrade** - Seminário de Computação em Nuvem
