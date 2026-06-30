@@ -415,8 +415,8 @@ MAJOR.MINOR.PATCH-SHORT_SHA
 Essas tags são geradas de forma autônoma pelo GitHub Actions e atreladas às imagens exportadas para o repositório Docker:
 
 ```bash
-usuario/fastapi-seminario:1.0.0-a2f4c9d
-usuario/fastapi-seminario:latest
+usuario/pipeline:1.0.0-a2f4c9d
+usuario/pipeline:latest
 ```
 
 ---
