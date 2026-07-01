@@ -11,7 +11,6 @@ de saida nos endpoints de usuario. Cada schema tem uma responsabilidade:
 """
 
 from datetime import datetime
-from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -35,6 +34,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     """Schema para criacao de um novo usuario."""
+
     pass
 
 
@@ -46,17 +46,17 @@ class UserUpdate(BaseModel):
     enviados na requisicao serao atualizados.
     """
 
-    name: Optional[str] = Field(
+    name: str | None = Field(
         None,
         min_length=2,
         max_length=255,
         description="Nome completo do usuario",
     )
-    email: Optional[EmailStr] = Field(
+    email: EmailStr | None = Field(
         None,
         description="E-mail do usuario",
     )
-    is_active: Optional[bool] = Field(
+    is_active: bool | None = Field(
         None,
         description="Status ativo do usuario",
     )

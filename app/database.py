@@ -31,6 +31,7 @@ SessionLocal = sessionmaker(
 
 class Base(DeclarativeBase):
     """Classe base para todos os modelos SQLAlchemy."""
+
     pass
 
 

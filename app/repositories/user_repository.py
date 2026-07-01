@@ -9,7 +9,6 @@ Caso o banco de dados seja trocado no futuro, apenas este modulo
 (e o database.py) precisam ser alterados.
 """
 
-from typing import Optional
 
 from sqlalchemy.orm import Session
 
@@ -34,12 +33,12 @@ class UserRepository:
         logger.debug(f"Buscando usuarios: skip={skip}, limit={limit}")
         return self.db.query(User).offset(skip).limit(limit).all()
 
-    def get_by_id(self, user_id: int) -> Optional[User]:
+    def get_by_id(self, user_id: int) -> User | None:
         """Busca um usuario pelo ID. Retorna None se nao encontrado."""
         logger.debug(f"Buscando usuario por ID: {user_id}")
         return self.db.query(User).filter(User.id == user_id).first()
 
-    def get_by_email(self, email: str) -> Optional[User]:
+    def get_by_email(self, email: str) -> User | None:
         """Busca um usuario pelo e-mail. Retorna None se nao encontrado."""
         logger.debug(f"Buscando usuario por e-mail: {email}")
         return self.db.query(User).filter(User.email == email).first()
@@ -66,7 +65,7 @@ class UserRepository:
         logger.info(f"Usuario criado com sucesso: ID={db_user.id}")
         return db_user
 
-    def update(self, user_id: int, user_data: UserUpdate) -> Optional[User]:
+    def update(self, user_id: int, user_data: UserUpdate) -> User | None:
         """
         Atualiza os campos de um usuario existente.
 
