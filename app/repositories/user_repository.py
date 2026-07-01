@@ -9,7 +9,6 @@ Caso o banco de dados seja trocado no futuro, apenas este modulo
 (e o database.py) precisam ser alterados.
 """
 
-
 from sqlalchemy.orm import Session
 
 from app.models.user import User
