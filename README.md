@@ -1,20 +1,10 @@
-# FastAPI Seminário CI/CD
-
-[![CI/CD Pipeline](https://github.com/usuario/fastapi-seminario/actions/workflows/deploy.yml/badge.svg)](https://github.com/usuario/fastapi-seminario/actions)
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688.svg)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED.svg)](https://www.docker.com/)
-
-Projeto completo demonstrando um pipeline de CI/CD moderno utilizando **FastAPI**, **Docker**, **GitHub Actions**, **Docker Hub**, **Nginx**, **Azure DevOps** e ferramentas de observabilidade como **Prometheus** e **Dozzle**.
-
----
+# FastAPI CI/CD
 
 ## Índice
 
 - [Objetivo](#objetivo)
 - [Arquitetura](#arquitetura)
 - [Tecnologias](#tecnologias)
-- [Estrutura do Projeto](#estrutura-do-projeto)
 - [Como Executar Localmente](#como-executar-localmente)
 - [Como Executar com Docker](#como-executar-com-docker)
 - [Pipeline CI/CD](#pipeline-cicd)
@@ -421,8 +411,8 @@ MAJOR.MINOR.PATCH-SHORT_SHA
 Essas tags são geradas de forma autônoma pelo GitHub Actions e atreladas às imagens exportadas para o repositório Docker:
 
 ```bash
-usuario/fastapi-seminario:1.0.0-a2f4c9d
-usuario/fastapi-seminario:latest
+usuario/pipeline:1.0.0-a2f4c9d
+usuario/pipeline:latest
 ```
 
 ---
