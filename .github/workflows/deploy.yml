@@ -165,7 +165,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'DEPLOY_SCRIPT'
             echo "Iniciando deploy..."
 
-            cd ~/fastapi-seminario || exit 1
+            cd ~/pipeline || exit 1
 
             git pull origin master
 
