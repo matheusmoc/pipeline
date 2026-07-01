@@ -175,6 +175,9 @@ jobs:
             docker compose pull api
             docker compose up -d api
 
+            # Recarrega as configuracoes do Nginx sem downtime
+            docker compose exec -T nginx nginx -s reload || true
+
             sleep 5
             if docker compose ps api | grep -q "Up"; then
               echo "Deploy realizado com sucesso!"
