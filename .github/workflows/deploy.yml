@@ -106,8 +106,8 @@ jobs:
 
       - name: Criar Tag Git
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "matheusmoc"
+          git config user.email "matheusandrade009@gmail.com"
           git tag -a "v${{ steps.version.outputs.VERSION }}" -m "Release v${{ steps.version.outputs.VERSION }}"
           git push origin "v${{ steps.version.outputs.VERSION }}"
 
